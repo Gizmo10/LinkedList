@@ -21,13 +21,13 @@ public class Node {
         n.next = end;
     }
 
-    public Node deleteNode(Node head,int data){
+    public Node deleteNode(int data){
 
-        Node n = head;
+        Node n = this;
 
         if(n.data == data){
 
-            return head.next;
+            return this.next;
         }
 
         while(n.next != null){
@@ -35,13 +35,41 @@ public class Node {
             if(n.next.data == data){
 
                 n.next = n.next.next;
-                return head;
+                return this;
             }
 
             n = n.next;
         }
 
-        return head;
+        return this;
+    }
 
+    public Node removeDuplicates(){
+
+        Node head = this;
+        Node current = this;
+
+        while(current.next != null){
+
+            Node search = current.next;
+
+            int data = current.data;
+
+            while(search != null){
+
+                if(search.data == data){
+
+                    search = search.next;
+                    head = head.deleteNode(data);
+                }else{
+
+                    search = search.next;
+                }
+            }
+
+            current = current.next;
+        }
+
+        return head;
     }
 }
