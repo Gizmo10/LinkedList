@@ -3,14 +3,14 @@ public class Main {
     public static void main(String[] args) {
 
         Node head = new Node();
-        int[] arr = {1,2,2,3,4,5,3,6,6,7,8,7};
+        int[] arr = {1,4,5,2,7,3,6,8,4,9};
 
         for (int num : arr) {
 
             head.appendToEnd(num);
         }
 
-      Node temp = head.kthToLast(4);
+      Node temp = head.partition(5);
 
         while (temp != null) {
 
