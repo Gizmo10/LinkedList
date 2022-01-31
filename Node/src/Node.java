@@ -3,6 +3,8 @@ public class Node {
     Node next = null;
     int data;
 
+    public Node(){}
+
     public Node(int d){
 
         data = d;
@@ -49,18 +51,19 @@ public class Node {
         Node head = this;
         Node current = this;
 
-        while(current.next != null){
+        while(current != null){
 
-            Node search = current.next;
+            Node search = current;
 
             int data = current.data;
 
-            while(search != null){
+            while(search.next != null){
 
-                if(search.data == data){
+                if(search.next.data == data){
 
                     search = search.next;
                     head = head.deleteNode(data);
+                    current = current.next;
                 }else{
 
                     search = search.next;
@@ -71,5 +74,30 @@ public class Node {
         }
 
         return head;
+    }
+
+    public Node kthToLast(int k){
+
+        Node current = this;
+        Node temp = new Node();
+        int indexOfElement = 0;
+
+        while(current != null){
+
+            indexOfElement++;
+
+            if(indexOfElement == k){
+
+                while(current.next != null){
+
+                    temp.appendToEnd(current.data);
+                    current = current.next;
+                }
+            }
+
+            current = current.next;
+        }
+
+        return temp;
     }
 }
