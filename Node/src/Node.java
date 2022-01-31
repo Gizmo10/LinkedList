@@ -100,4 +100,36 @@ public class Node {
 
         return temp;
     }
+
+    public Node partition(int k){
+
+        Node rightPartition = new Node();
+        Node leftPartition = new Node();
+        Node current = this;
+
+        while(current.next != null){
+
+            if(current.next.data < k){
+
+                leftPartition.appendToEnd(current.next.data);
+            }else{
+
+                rightPartition.appendToEnd(current.next.data);
+            }
+
+            current = current.next;
+        }
+
+        current = leftPartition;
+
+        while(current.next != null){
+
+            current  = current.next;
+        }
+
+        current.next = rightPartition;
+
+        return leftPartition;
+
+    }
 }
