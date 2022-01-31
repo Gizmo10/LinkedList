@@ -1,22 +1,21 @@
 public class Main {
 
-    public static void main(String [] args){
+    public static void main(String[] args) {
 
-        Node head = new Node(0);
-        int [] arr = {2,2,2,3,4,1,3,4,5,6,6,6};
+        Node head = new Node();
+        int[] arr = {1,2,2,3,4,5,3,6,6,7,8,7};
 
-        for(int num: arr){
+        for (int num : arr) {
 
             head.appendToEnd(num);
         }
 
-       head = head.removeDuplicates();
+      Node temp = head.kthToLast(4);
 
-        while(head != null){
+        while (temp != null) {
 
-            System.out.print(head.data);
-            head = head.next;
+            System.out.print(temp.data);
+            temp = temp.next;
         }
-
     }
 }
