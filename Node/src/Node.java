@@ -132,4 +132,47 @@ public class Node {
         return leftPartition;
 
     }
+
+    public Node sumLists(Node list2){
+
+        Node list1 = this;
+        Node answer = new Node();
+        int remainder = 0;
+        int carry = 0;
+
+        while(list1.next != null || list2.next != null){
+
+            if(list1.next != null && list2.next != null){
+
+                int sum = carry + list1.next.data + list2.next.data;
+                remainder = sum % 10;
+                carry = sum / 10;
+
+                answer.appendToEnd(remainder);
+
+                list1 = list1.next;
+                list2 = list2.next;
+
+            }else if(list1.next != null){
+
+                int sum = carry + list1.next.data;
+                remainder = sum % 10;
+                carry = sum / 10;
+
+                answer.appendToEnd(remainder);
+                list1 = list1.next;
+
+            }else if(list2.next != null){
+
+                int sum = carry + list2.next.data;
+                remainder = sum % 10;
+                carry = sum / 10;
+
+                answer.appendToEnd(remainder);
+                list2 = list2.next;
+            }
+        }
+
+        return answer;
+    }
 }
